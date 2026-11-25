@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3GPP Explained: RedCap, eRedCap, eDRX | Santhiswaroop Koneni</title>
+<meta name="description" content="Plain-language notes on 5G NR RedCap (Rel-17), eRedCap (Rel-18) and eDRX, written from public 3GPP information.">
+<style>
+:root{--bg:#0b1020;--card:#121a30;--line:#22305a;--txt:#e6ebf7;--mut:#9aa8c7;--acc:#4cc9f0;--acc2:#7bf0b0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:820px;margin:0 auto;padding:40px 24px}
+h1{font-size:2rem;margin:14px 0 6px}
+h2{font-size:1.35rem;margin:36px 0 8px;color:var(--acc2)}
+p,li{color:var(--mut)}ul{padding-left:20px;margin:8px 0}
+.sub{color:var(--mut);margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;color:var(--mut)}
+th{background:var(--card);color:var(--txt)}
+.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:30px;font-size:.88rem;color:var(--mut)}
+@media(max-width:600px){table{font-size:.8rem}}
+@media print{body{background:#fff;color:#111}p,li,th,td,.sub,.note{color:#222;background:#fff}h2{color:#111}a{color:#111}}
+</style></head><body><div class="wrap">
+<a href="index.html">&larr; Back to portfolio</a>
+<h1>3GPP Explained: RedCap, eRedCap and eDRX</h1>
+<p class="sub">Plain-language notes on how 5G NR serves devices that do not need full 5G speed. Written from public 3GPP information. Figures are typical values; always check the specification for exact numbers.</p>
+
+<h2>Why these features exist</h2>
+<p>Full 5G NR devices are built for very high speeds, so they need wide bandwidth, several antennas and a lot of power. Many devices do not need that: smartwatches, industrial sensors, video cameras and wearables. These features give the network a cheaper, simpler, longer-lasting device class that still lives on the same 5G network.</p>
+
+<h2>RedCap (Reduced Capability, Release 17)</h2>
+<p>Often called "NR-Light". It is a simpler 5G device type that sits between full 5G and low-power IoT (LTE-M / NB-IoT).</p>
+<ul>
+<li>Smaller bandwidth: up to 20 MHz in FR1 (100 MHz in FR2) instead of 100 MHz or more.</li>
+<li>Fewer antennas: 1 or 2 receive branches and 1 transmit, so fewer MIMO layers.</li>
+<li>Optional relaxed features such as half-duplex FDD and lower modulation in some cases.</li>
+<li>Network side: the cell must tell RedCap devices they are allowed, and the network needs to recognise them early (during random access) so it can schedule them within their limits.</li>
+</ul>
+
+<h2>eRedCap (enhanced RedCap, Release 18)</h2>
+<p>Takes the idea further for even simpler, lower-cost, lower-power devices.</p>
+<ul>
+<li>Much smaller bandwidth: 5 MHz in FR1.</li>
+<li>Lower peak data rate, on the order of 10 Mbps, with a single receive branch and a single layer.</li>
+<li>Targets wearables and low-end industrial devices, closing the gap towards LTE-M class devices.</li>
+<li>Network side: it must recognise the new device type, broadcast its own access rules, and keep scheduling within the small bandwidth.</li>
+</ul>
+
+<h2>eDRX (extended Discontinuous Reception)</h2>
+<p>DRX lets a device sleep and wake periodically to check for paging. Extended DRX stretches the sleep much longer to save battery.</p>
+<ul>
+<li>In idle mode the cycle can reach about 2.9 hours.</li>
+<li>In RRC_INACTIVE the cycle is up to about 10.24 seconds.</li>
+<li>Trade-off: longer sleep saves power but delays how quickly the network can reach the device.</li>
+<li>The network and device must agree on the cycle and paging timing so pages are not missed.</li>
+</ul>
+
+<h2>Quick comparison</h2>
+<table>
+<tr><th></th><th>Full NR</th><th>RedCap (Rel-17)</th><th>eRedCap (Rel-18)</th></tr>
+<tr><td>Bandwidth (FR1)</td><td>up to 100 MHz</td><td>up to 20 MHz</td><td>5 MHz</td></tr>
+<tr><td>Rx branches</td><td>2 to 4</td><td>1 or 2</td><td>1</td></tr>
+<tr><td>Typical use</td><td>Phones, FWA</td><td>Wearables, cameras, sensors</td><td>Low-end wearables, IoT</td></tr>
+<tr><td>Goal</td><td>Speed</td><td>Lower cost</td><td>Lowest cost / power</td></tr>
+</table>
+
+<div class="note">Personal educational notes. Based on public 3GPP material and general industry knowledge. Not affiliated with, and contains no information from, any employer.</div>
+<p style="margin-top:24px"><a href="index.html">&larr; Back to portfolio</a></p>
+</div></body></html>
